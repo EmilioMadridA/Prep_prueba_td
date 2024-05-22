@@ -16,9 +16,8 @@ El proyecto `test_prueba_td` es una aplicación web construida con el framework 
 
 1. Clonar el repositorio:
 
-   ```sh
-   git clone https://github.com/tu_usuario/test_prueba_td.git
-   cd test_prueba_td
+   ```ssh
+   git clone git@github.com:EmilioMadridA/Prep_prueba_td.git
 
 2. Crear y activar un entorno virtual:
 
