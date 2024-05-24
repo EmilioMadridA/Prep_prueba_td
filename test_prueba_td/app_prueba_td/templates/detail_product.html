@@ -1,0 +1,32 @@
+<!-- COMANDO PARA EXTENDER CODIGO DE ARCHIVO INDICADO -->
+{% extends "static_base.html" %}
+<!-- COMANDO DE CARGA DE ARCHIVOS EN STATIC -->
+{% load static %}
+
+{% block content %}
+  <h1>Mi Carrito</h1>
+  {% if cart_items %}
+    <ul>
+      {% for item in cart_items %}
+        <li>
+          <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 60px;">
+          <h2>{{ item.product.name }}</h2>
+          <p>Precio: ${{ item.product.price }}</p>
+          <p>Cantidad: {{ item.quantity }}</p>
+          <p>Monto Total: ${{ item.total_amount }}</p>
+          <!-- Botón para eliminar el producto del carrito -->
+          <form method="post" action="{% url 'remove_from_cart' item.product.id %}">
+            {% csrf_token %}
+            <button type="submit">Eliminar del carrito</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'make_purchase' %}">
+        {% csrf_token %}
+        <button type="submit">Realizar compra</button>
+      </form>
+  {% else %}
+    <p>No hay productos en el carrito.</p>
+  {% endif %}
+{% endblock %}

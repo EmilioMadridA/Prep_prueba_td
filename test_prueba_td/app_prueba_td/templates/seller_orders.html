@@ -1,0 +1,27 @@
+<!-- COMANDO PARA EXTENDER CODIGO DE ARCHIVO INDICADO -->
+{% extends "static_base.html" %}
+<!-- COMANDO DE CARGA DE ARCHIVOS EN STATIC -->
+{% load static %}
+
+{% block content %}
+  <h1>Pedidos de mis productos</h1>
+  {% if seller_orders %}
+    <ul>
+      {% for seller_order in seller_orders %}
+        <li>
+          <h2>Pedido #{{ seller_order.order.id }}</h2>
+          <p>Realizado por: {{ seller_order.order.user.first_name }} {{ seller_order.order.user.last_name }}</p>
+          <p>Fecha de compra: {{ seller_order.order.created_at }}</p>
+          <ul>
+            {% for item in seller_order.items %}
+              <li>{{ item.quantity }} x {{ item.product.name }} - ${{ item.product.price }}</li>
+            {% endfor %}
+          </ul>
+          <p>Monto Total: ${{ seller_order.total_amount }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay pedidos de tus productos.</p>
+  {% endif %}
+{% endblock %}

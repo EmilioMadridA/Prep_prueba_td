@@ -42,13 +42,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'add_product' %}">Add Product</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'seller_orders' %}">Orders</a>
+                    </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'product_list' %}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'detail_product' %}">Carrito</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="login">Inicia Sesión</a>
+                        <a class="nav-link" href="{% url 'login' %}">Inicia Sesión</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
